@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="f31b750b-df56-4aec-bcf9-744aca51fd8b" activeEnvironment="Default" name="Loan Eligibility" resourceRoot="" soapui-version="5.6.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="0df0ac44-0686-4bc3-abb9-3a0a1d8dd308" wsaVersion="NONE" name="LoanEligibilitySoap11" type="wsdl" bindingName="{http://www.example.org/SpringSoapDemo/api/LoanEligibility}LoanEligibilitySoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/loanEligibility.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/loanEligibility.wsdl"><con:part><con:url>http://localhost:8080/ws/loanEligibility.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.example.org/SpringSoapDemo/api/LoanEligibility" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.example.org/SpringSoapDemo/api/LoanEligibility" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/SpringSoapDemo/api/LoanEligibility">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.example.org/SpringSoapDemo/api/LoanEligibility" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="CustomerRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerName" type="xsd:string"/>
+            <xsd:element name="age" type="xsd:int"/>
+            <xsd:element name="income" type="xsd:long"/>
+            <xsd:element name="occupancy" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CustomerResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="isEligible" type="xsd:boolean"/>
+            <xsd:element name="approvedAmount" type="xsd:long"/>
+            <xsd:element maxOccurs="unbounded" name="criteriaMismatch" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CustomerRequest">
+    <wsdl:part element="tns:CustomerRequest" name="CustomerRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CustomerResponse">
+    <wsdl:part element="tns:CustomerResponse" name="CustomerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LoanEligibility">
+    <wsdl:operation name="Customer">
+      <wsdl:input message="tns:CustomerRequest" name="CustomerRequest"></wsdl:input>
+      <wsdl:output message="tns:CustomerResponse" name="CustomerResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LoanEligibilitySoap11" type="tns:LoanEligibility">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Customer">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CustomerRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CustomerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LoanEligibilityService">
+    <wsdl:port binding="tns:LoanEligibilitySoap11" name="LoanEligibilitySoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="b25f039d-b7d2-42bf-9b2f-35c773102933" isOneWay="false" action="" name="Customer" bindingOperationName="Customer" type="Request-Response" outputName="CustomerResponse" inputName="CustomerRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7adf752d-a8f4-4e82-9996-234e284b0a4c" name="Loan Eligibility Positive"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/loanEligibility.wsdl</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:loan="http://www.example.org/SpringSoapDemo/api/LoanEligibility">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <loan:CustomerRequest>\r
+         <loan:customerName>Ayush</loan:customerName>\r
+         <loan:age>32</loan:age>\r
+         <loan:income>700000</loan:income>\r
+         <loan:occupancy>Govt</loan:occupancy>\r
+      </loan:CustomerRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/SpringSoapDemo/api/LoanEligibility/LoanEligibility/CustomerRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="ac736b5c-1745-441d-bf9a-e55b26ac1302" name="Loan Eligibility Negative"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/loanEligibility.wsdl</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:loan="http://www.example.org/SpringSoapDemo/api/LoanEligibility">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <loan:CustomerRequest>\r
+         <loan:customerName>Ayush</loan:customerName>\r
+         <loan:age>18</loan:age>\r
+         <loan:income>700000</loan:income>\r
+         <loan:occupancy>Govt</loan:occupancy>\r
+      </loan:CustomerRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/SpringSoapDemo/api/LoanEligibility/LoanEligibility/CustomerRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="ec66c45e-cf27-433d-960c-de46470edf61" name="test"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/loanEligibility.wsdl</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:loan="http://www.example.org/SpringSoapDemo/api/LoanEligibility">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <loan:CustomerRequest>\r
+         <loan:customerName>Ayush</loan:customerName>\r
+         <loan:age>32</loan:age>\r
+         <loan:income>700000</loan:income>\r
+         <loan:occupancy>Govt</loan:occupancy>\r
+      </loan:CustomerRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/SpringSoapDemo/api/LoanEligibility/LoanEligibility/CustomerRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="5b1689a7-cbb1-4209-a88b-e40da71e275f" name="LoanEligibilitySoap11 TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="cb30e88a-1134-451e-9662-d1fcd5977372" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Customer TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="a8d8e3f4-a926-4bdd-8b9f-2693dc1ec207" name="Customer"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LoanEligibilitySoap11</con:interface><con:operation>Customer</con:operation><con:request name="Customer" id="fdb9074d-2ed9-42a4-98ed-6aaef3ebec32"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:loan="http://www.example.org/SpringSoapDemo/api/LoanEligibility">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <loan:CustomerRequest>\r
+         <loan:customerName>?</loan:customerName>\r
+         <loan:age>?</loan:age>\r
+         <loan:income>?</loan:income>\r
+         <loan:occupancy>?</loan:occupancy>\r
+      </loan:CustomerRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://www.example.org/SpringSoapDemo/api/LoanEligibility/LoanEligibility/CustomerRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
